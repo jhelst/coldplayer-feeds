@@ -63,7 +63,7 @@ export class manager extends AlgoManager {
       await this.start()
     }
 
-    const lists: string[] = `${process.env.SCIENCE_LISTS}`.split('|')
+    const lists: string[] = `${process.env.COLDPLAYER_LISTS}`.split('|')
 
     if (process.env.SCIENCE_RECURSE === 'true') {
       const list_owners: string[] = []
@@ -79,7 +79,7 @@ export class manager extends AlgoManager {
         const owner_lists = await getUserLists(owner, this.agent)
         const owner_name = await resoveDIDToHandle(owner, this.agent)
         owner_lists.forEach((list) => {
-          if (list.name.includes(`${process.env.SCIENCE_SYMBOL}`)) {
+          if (list.name.includes(`${process.env.COLDPLAYER_STRING}`)) {
             console.log(
               `${this.name}: Adding ${list.name} (${owner_name}) to lists`,
             )
@@ -173,9 +173,9 @@ export class manager extends AlgoManager {
 
   public async filter_post(post: Post): Promise<Boolean> {
     if (
-      post.text.toLowerCase().includes(`${process.env.SCIENCE_SYMBOL}`) ||
+      post.text.toLowerCase().includes(`${process.env.COLDPLAYER_STRING}`) ||
       post.tags?.includes('science') ||
-      post.tags?.includes(`${process.env.SCIENCE_SYMBOL}`)
+      post.tags?.includes(`${process.env.COLDPLAYER_STRING}`)
     ) {
       if (this.authorList.includes(post.author)) {
         return true

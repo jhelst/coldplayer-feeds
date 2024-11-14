@@ -59,7 +59,7 @@ export class manager extends AlgoManager {
     })
 
     const existing_members = await getListMembers(
-      `${process.env.AUSPOL_LIST}`,
+      `${process.env.COLDPLAY_LIST}`,
       this.agent,
     )
     const new_members = db_authors.filter((member) => {
@@ -92,13 +92,13 @@ export class manager extends AlgoManager {
       })
     }
 
-    // await setListMembers(`${process.env.AUSPOL_LIST}`, db_authors, this.agent)
+    // await setListMembers(`${process.env.COLDPLAY_LIST}`, db_authors, this.agent)
     */
   }
 
   public async filter_post(post: Post): Promise<Boolean> {
     if (['did:plc:ddwwm2jzyq47vvo3tscsozxr'].includes(post.author)) return false
-    if (post.text.toLowerCase().includes(`${process.env.AUSPOL_MATCH}`)) {
+    if (post.text.toLowerCase().includes(`${process.env.COLDPLAY_MATCH}`)) {
       return true
     }
     return false
