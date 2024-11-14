@@ -13,7 +13,7 @@ import dbClient from '../db/dbClient'
 dotenv.config()
 
 // max 15 chars
-export const shortname = 'auspol'
+export const shortname = 'motswt'
 
 export const handler = async (ctx: AppContext, params: QueryParams) => {
   const builder = await dbClient.getLatestPostsForTag({
@@ -40,7 +40,7 @@ export const handler = async (ctx: AppContext, params: QueryParams) => {
 
 export class manager extends AlgoManager {
   public name: string = shortname
-  public author_collection = 'auspol_members'
+  public author_collection = 'motswt_members'
 
   public async periodicTask() {
     /*
